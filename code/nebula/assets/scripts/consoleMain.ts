@@ -48,29 +48,29 @@ export class consoleMain extends Component {
 
         // playInfo
         var playInfoNode = allocNode("playInfo")
-        playInfoNode = allocUITransform(playInfoNode, this.mainWidth, 100)
-        playInfoNode = setBackground(playInfoNode, "main/background/spriteFrame", 0, 120)
+        playInfoNode = allocUITransform(playInfoNode, this.mainWidth, 120)
+        playInfoNode = setBackground(playInfoNode, "main/background/spriteFrame", this.mainWidth, 120)
         this.node.addChild(playInfoNode)
         playInfoNode.addComponent(playInfo)
 
         // broadcast
         var broadcastNode = allocNode("broadcast")
-        broadcastNode = allocUITransform(broadcastNode, this.mainWidth, 100)
-        broadcastNode = setBackground(broadcastNode, "main/background/spriteFrame", 0, 30)
+        broadcastNode = allocUITransform(broadcastNode, this.mainWidth, 30)
+        broadcastNode = setBackground(broadcastNode, "main/mainBackground/spriteFrame", this.mainWidth, 30)
         this.node.addChild(broadcastNode)
         broadcastNode.addComponent(broadcast)
 
         // functions
         var functionsNode = allocNode("functions")
-        functionsNode = allocUITransform(functionsNode, this.mainWidth, 100)
-        functionsNode = setBackground(functionsNode, "main/background/spriteFrame", 0, 550)
+        functionsNode = allocUITransform(functionsNode, this.mainWidth, 550)
+        functionsNode = setBackground(functionsNode, "main/background/spriteFrame", this.mainWidth, 550)
         this.node.addChild(functionsNode)
         functionsNode.addComponent(functions)
 
         // fighting
         var fighting = allocNode("fighting")
         fighting = allocUITransform(fighting, this.mainWidth, 100)
-        fighting = setBackground(fighting, "main/background/spriteFrame", 0, 100)
+        fighting = setBackground(fighting, "main/mainBackground/spriteFrame", this.mainWidth, 100)
         this.node.addChild(fighting)
     }
 }

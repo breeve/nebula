@@ -27,7 +27,6 @@ export class broadcast extends Component {
 
         this.infosx = labelNode.getPosition().x
         this.infosy = labelNode.getPosition().y
-        
     }
 
     update(deltaTime: number) {
