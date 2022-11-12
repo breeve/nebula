@@ -1,27 +1,33 @@
-import { _decorator, Component, Node, UITransform, Label, Vec3 } from 'cc';
+import { _decorator, Component, Node, UITransform, Label, Layers, Color, Vec3 } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('broadcast')
 export class broadcast extends Component {
     x = 0
-    y = 0
     infos = ""
     infosx = 0
     infosy = 0
     start() {
         var uiTransForm = this.node.getComponent(UITransform)
         var pos = this.node.getPosition()
-        this.x = pos.x - uiTransForm.width
-        this.y = pos.y - uiTransForm.height
+        this.x = pos.x-uiTransForm.width/2
         this.infos = ""
 
-        var label = this.node.getChildByName("infos")
-        var labelComponent = label.getComponent(Label)
-        this.infosx = label.getPosition().x
-        this.infosy = label.getPosition().y
-        label.setPosition(new Vec3(this.infosx+200, this.infosy))
-        this.infosx = label.getPosition().x
-        this.infosy = label.getPosition().y
+        var labelNode = new Node("infos")
+        labelNode.addComponent(Label)
+        this.node.addChild(labelNode)
+
+        var labelNode = this.node.getChildByName("infos")
+        labelNode.layer = Layers.Enum.UI_2D
+        labelNode.setPosition(uiTransForm.width, pos.y)
+        var labelComponent = labelNode.getComponent(Label)
+        labelComponent.color = new Color(255, 0, 0)
+        labelComponent.fontSize = 20
+        labelComponent.string = this.getInfos()
+
+        this.infosx = labelNode.getPosition().x
+        this.infosy = labelNode.getPosition().y
+        
     }
 
     update(deltaTime: number) {
